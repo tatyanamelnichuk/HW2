@@ -6,11 +6,11 @@ public class Bouquet {
 
    public static void main (String[] args){
 
-       Double price = 0.00;
+       Double bouquetPrice = 0.00;
 
-       Roses rose = null;
-       Eustomas eustoma = null;
-       Herbs herb = null;
+       Rose rose = null;
+       Eustoma eustoma = null;
+       Herb herb = null;
 
        System.out.println("What flowers do you need (roses / eustomas / herbs / combined)?");
        Scanner scannerString = new Scanner(System.in);
@@ -21,22 +21,25 @@ public class Bouquet {
        Integer flowerCount = Integer.valueOf(scannerString.nextLine());
        switch (flowerName){
            case "roses":
-               rose = new Roses("rose", "large", flowerColor);
-               price = rose.getPrice()*flowerCount;
+               rose = new Rose("rose", "large", flowerColor);
+               bouquetPrice = rose.getPrice()*flowerCount;
+               System.out.println("Your bouquet consists from " + flowerCount + " " + rose.getColor() + " " + rose.getSize() +  " " + rose.getName() + "s.");
                break;
            case "eustomas":
-               eustoma = new Eustomas("eustoma", "large", flowerColor);
-               price = eustoma.getPrice()*flowerCount;
+               eustoma = new Eustoma("eustoma", "large", flowerColor);
+               bouquetPrice = eustoma.getPrice()*flowerCount;
+               System.out.println("Your bouquet consists from " + flowerCount + " " + eustoma.getColor() + " " + eustoma.getSize() +  " " + eustoma.getName() + "s.");
                break;
            case "herbs":
-               herb = new Herbs("herb", "large", flowerColor);
-               price = herb.getPrice()*flowerCount;
+               herb = new Herb("herb", "large", flowerColor);
+               bouquetPrice = herb.getPrice()*flowerCount;
+               System.out.println("Your bouquet consists from " + flowerCount + " " + herb.getColor() + " " + herb.getSize() +  " " + herb.getName() + "s.");
                break;
            case "combined":
-               price = (rose.getPrice()+eustoma.getPrice()+herb.getPrice())*flowerCount;
+               bouquetPrice = (rose.getPrice()+eustoma.getPrice()+herb.getPrice())*flowerCount;
                break;
        }
-       System.out.println(price);
+       System.out.println("The price of your bouquet is the following: " + bouquetPrice);
     }
 
 }
